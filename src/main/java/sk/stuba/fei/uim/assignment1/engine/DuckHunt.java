@@ -11,9 +11,20 @@ public class DuckHunt extends ValidInput {
 
         System.out.println("Welcome to Duck Hunt!");
 
-
-
-
         byte numOfPlayers = playerCount();
+
+        serveDeck();
+
+
+
+
     }
+
+
+
+    private void serveDeck(){
+
+    }
+
+
 }

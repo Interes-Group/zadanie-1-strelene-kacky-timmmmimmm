@@ -1,7 +1,8 @@
 package sk.stuba.fei.uim.assignment1.utility;
 
-import java.io.IOException;
+
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ValidInput {
 
@@ -30,11 +31,12 @@ public class ValidInput {
             catch (java.util.InputMismatchException e){
                 //e.printStackTrace();  //Can be enabled, but it is really messy
                 System.out.print("Please Enter a number: ");
-                String trowOut = input.next();
+                String trowOut = input.next(); //Flushes the std input so it can be reused
             }
         }
 
         input.close();
         return playerCnt;
+
     }
 }
