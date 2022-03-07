@@ -5,7 +5,7 @@ import sk.stuba.fei.uim.assignment1.engine.cards.CardType;
 
 public class Duck extends Card {
 
-    Duck(byte ownerID, byte duckNum){
+    public Duck(byte ownerID, byte duckNum){
         this.setType(CardType.Duck);
         this.setName("Quack " + duckNum);
         this.setOwner(ownerID);

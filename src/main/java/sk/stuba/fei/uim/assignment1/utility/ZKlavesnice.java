@@ -1,11 +1,11 @@
-package sk.stuba.fei.uim.oop.utility;
+package sk.stuba.fei.uim.assignment1.utility;
 
 import java.io.*;
 
 public class ZKlavesnice {
 
     public static char readChar(String napis_pre_uzivatela) {
-        char c = ' ';
+        char c;
 
         InputStreamReader zklavesnice = new InputStreamReader(System.in);
         try {
@@ -21,7 +21,7 @@ public class ZKlavesnice {
     }
 
     public static String readString(String napis_pre_uzivatela) {
-        String s = "";
+        String s;
 
         BufferedReader zklavesnice = new BufferedReader(new InputStreamReader(System.in));
         try {	System.out.println(napis_pre_uzivatela);
@@ -36,7 +36,7 @@ public class ZKlavesnice {
     }
 
     public static int readInt(String napis_pre_uzivatela) {
-        int n = 0;
+        int n;
         String s;
 
         BufferedReader zklavesnice = new BufferedReader(new InputStreamReader(System.in));
@@ -53,7 +53,7 @@ public class ZKlavesnice {
     }
 
     public static double readDouble(String napis_pre_uzivatela) {
-        double x = 0.0;
+        double x;
         String s;
 
         BufferedReader zklavesnice = new BufferedReader(new InputStreamReader(System.in));

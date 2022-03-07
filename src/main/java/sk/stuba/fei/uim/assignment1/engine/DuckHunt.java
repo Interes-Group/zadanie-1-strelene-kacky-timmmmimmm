@@ -1,5 +1,4 @@
 package sk.stuba.fei.uim.assignment1.engine;
-
 import sk.stuba.fei.uim.assignment1.utility.ValidInput;
 
 public class DuckHunt extends ValidInput {
@@ -23,6 +22,7 @@ public class DuckHunt extends ValidInput {
 
 
     private void serveDeck(){
+
 
     }
 

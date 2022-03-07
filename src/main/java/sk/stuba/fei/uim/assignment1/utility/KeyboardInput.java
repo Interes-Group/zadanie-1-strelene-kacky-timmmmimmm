@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.oop.utility;
+package sk.stuba.fei.uim.assignment1.utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
