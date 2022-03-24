@@ -9,7 +9,6 @@ public class Pond {
     private final ArrayList<Integer> rest = new ArrayList<>();
     private final ArrayList<Boolean> aim = new ArrayList<>();
 
-    public Pond(){}
 
     public Pond(byte numOfPlayers){
         ArrayList<Integer> cards = new ArrayList<>();
