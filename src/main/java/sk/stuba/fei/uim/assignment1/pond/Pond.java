@@ -36,8 +36,19 @@ public class Pond {
         cards.clear();
     }
 
+
+
+
     public ArrayList<Boolean> accessAim (){
         return aim;
+    }
+
+    public ArrayList<Integer> accessArena(){
+        return arena;
+    }
+
+    public ArrayList<Integer> accessRest(){
+        return rest;
     }
 
 }

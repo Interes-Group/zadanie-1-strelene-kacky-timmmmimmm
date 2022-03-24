@@ -29,4 +29,10 @@ public class Aim extends ValidInput implements Card{
 
         return false;
     }
+
+
+    @Override
+    public String toString() {
+        return "Aim";
+    }
 }
