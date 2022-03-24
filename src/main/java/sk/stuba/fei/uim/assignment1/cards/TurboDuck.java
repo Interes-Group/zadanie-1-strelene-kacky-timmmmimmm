@@ -1,15 +1,18 @@
 package sk.stuba.fei.uim.assignment1.cards;
 
 import sk.stuba.fei.uim.assignment1.pond.Pond;
+import sk.stuba.fei.uim.assignment1.utility.ValidInput;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Scatter implements Card{
+public class TurboDuck extends ValidInput implements Card {
+
 
     ArrayList<Integer> arena;
 
-    public Scatter(Pond pond){
+
+    public TurboDuck(Pond pond){
         arena = pond.accessArena();
     }
 
@@ -17,13 +20,21 @@ public class Scatter implements Card{
     @Override
     public boolean use() {
 
-        Collections.shuffle(arena);
+        int duckPos = getDuckPos(arena);
+
+        if(duckPos == -1)
+            return true;
+
+        Collections.swap(arena,0,duckPos);
 
         return false;
     }
 
+
+
+
     @Override
     public String toString(){
-        return "Scatter";
+        return "Turbo Duck";
     }
 }

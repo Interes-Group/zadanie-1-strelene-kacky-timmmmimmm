@@ -11,7 +11,7 @@ public abstract class  ValidInput {
     Scanner input = new Scanner(System.in);
 
 
-   public byte playerCount(){
+    public byte playerCount(){
 
        byte playerCnt;
 
@@ -35,7 +35,7 @@ public abstract class  ValidInput {
             catch (java.util.InputMismatchException e){
                 //e.printStackTrace();  //Can be enabled, but it is really messy
                 System.out.print("Please Enter a number: ");
-                String throwOut = input.next();
+                input.next();
             }
         }
         return playerCnt;
@@ -44,8 +44,8 @@ public abstract class  ValidInput {
 
 
 
-
     public int aimPosition(ArrayList<Boolean> field){
+
        int position;
 
         System.out.print("Please choose the place you want to aim at (1 - 6) : ");
@@ -72,7 +72,7 @@ public abstract class  ValidInput {
             catch (java.util.InputMismatchException e){
                 //e.printStackTrace();  //Can be enabled, but it is really messy
                 System.out.print("Please Enter a number: ");
-                String throwOut = input.next();
+                input.next();
             }
         }
 
@@ -80,4 +80,41 @@ public abstract class  ValidInput {
     }
 
 
+
+
+
+    public int getDuckPos(ArrayList<Integer> arena){
+
+        int position;
+
+        System.out.print("Please choose a place from which to pull a duck to the 1st position (1 - 6) : ");
+
+        while (true){
+
+            try {
+                position = input.nextInt();
+
+                if(position >= 1  &&  position <= 6){
+
+                    if(arena.get(position) != 0)
+                        break;
+                    System.out.println("You have to choose a duck!");
+                }
+
+                else if(position == -1)
+                    return -1;
+
+
+                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+            }
+
+            catch (java.util.InputMismatchException e){
+                //e.printStackTrace();  //Can be enabled, but it is really messy
+                System.out.print("Please Enter a number: ");
+                input.next();
+            }
+        }
+
+        return position;
+    }
 }
