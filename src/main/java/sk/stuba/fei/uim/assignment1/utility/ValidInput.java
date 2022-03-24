@@ -11,6 +11,7 @@ public abstract class  ValidInput {
     Scanner input = new Scanner(System.in);
 
 
+
     public byte playerCount(){
 
        byte playerCnt;
@@ -117,4 +118,84 @@ public abstract class  ValidInput {
 
         return position;
     }
+
+
+
+    /**
+     * Checks if you can shoot at the desired field
+     * @return input position
+     */
+    public int fireAt(ArrayList<Boolean> aim){
+        int position;
+
+        System.out.print("Please choose a field which to shoot at");
+
+        while (true){
+
+            try {
+                position = input.nextInt();
+
+                if(position >= 1  &&  position <= 6){
+
+                    if(aim.get(position))
+                        break;
+                    System.out.println("Field must be aimed at");
+                }
+
+                else if(position == -1)
+                    return -1;
+
+
+                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+            }
+
+            catch (java.util.InputMismatchException e){
+                //e.printStackTrace();  //Can be enabled, but it is really messy
+                System.out.print("Please Enter a number: ");
+                input.next();
+            }
+        }
+
+        return position;
+    }
+
+
+
+    /**
+     * Checks if you can shoot at the desired field (without checking reticules)
+     * @return input position
+     */
+    public int fireAt(){
+        int position;
+
+        System.out.print("Please choose a field which to shoot at");
+
+        while (true){
+
+            try {
+                position = input.nextInt();
+
+                if(position >= 1  &&  position <= 6)
+                    break;
+
+
+                else if(position == -1)
+                    return -1;
+
+
+                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+            }
+
+            catch (java.util.InputMismatchException e){
+                //e.printStackTrace();  //Can be enabled, but it is really messy
+                System.out.print("Please Enter a number: ");
+                input.next();
+            }
+        }
+
+        return position;
+    }
+
+
+
 }
