@@ -31,7 +31,7 @@ public abstract class  ValidInput {
                     return -1;
                 }
 
-                System.out.print("Invalid number of players!\nPlease choose a valid number.\nYour choice: ");
+                System.out.print("Invalid number of players!\nPlease choose a valid number.(-1 to quit)\nYour choice: ");
             }
 
             catch (java.util.InputMismatchException e){
@@ -59,7 +59,7 @@ public abstract class  ValidInput {
 
                 if(position >= 1  &&  position <= 6){
 
-                    if(!field.get(position))
+                    if(!field.get(position-1))
                         break;
                     System.out.println("Your desired position has a reticle already aimed at it");
                 }
@@ -68,7 +68,7 @@ public abstract class  ValidInput {
                     return -1;
 
 
-                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+                System.out.print("Invalid field!\nPlease choose a valid number.(-1 to quit)\nYour choice: ");
             }
 
             catch (java.util.InputMismatchException e){
@@ -78,7 +78,7 @@ public abstract class  ValidInput {
             }
         }
 
-        return position;
+        return position -1;
     }
 
 
@@ -98,7 +98,7 @@ public abstract class  ValidInput {
 
                 if(position >= 1  &&  position <= 6){
 
-                    if(arena.get(position) != 0)
+                    if(arena.get(position-1) != 0)
                         break;
                     System.out.println("You have to choose a duck!");
                 }
@@ -107,7 +107,7 @@ public abstract class  ValidInput {
                     return -1;
 
 
-                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+                System.out.print("Invalid field!\nPlease choose a valid number.(-1 to quit)\nYour choice: ");
             }
 
             catch (java.util.InputMismatchException e){
@@ -117,7 +117,7 @@ public abstract class  ValidInput {
             }
         }
 
-        return position;
+        return position -1;
     }
 
 
@@ -129,7 +129,7 @@ public abstract class  ValidInput {
     public int fireAt(ArrayList<Boolean> aim){
         int position;
 
-        System.out.print("Please choose a field which to shoot at");
+        System.out.print("Please choose a field which to shoot at :");
 
         while (true){
 
@@ -138,16 +138,16 @@ public abstract class  ValidInput {
 
                 if(position >= 1  &&  position <= 6){
 
-                    if(aim.get(position))
+                    if(aim.get(position-1))
                         break;
-                    System.out.println("Field must be aimed at");
+                    System.out.println("Field must be aimed at!");
                 }
 
                 else if(position == -1)
                     return -1;
 
 
-                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+                System.out.print("Invalid field!\nPlease choose a valid number.(-1 to quit)\nYour choice: ");
             }
 
             catch (java.util.InputMismatchException e){
@@ -157,7 +157,7 @@ public abstract class  ValidInput {
             }
         }
 
-        return position;
+        return position -1;
     }
 
 
@@ -169,7 +169,7 @@ public abstract class  ValidInput {
     public int fireAt(){
         int position;
 
-        System.out.print("Please choose a field which to shoot at");
+        System.out.print("Please choose a field which to shoot at: ");
 
         while (true){
 
@@ -184,7 +184,7 @@ public abstract class  ValidInput {
                     return -1;
 
 
-                System.out.print("Invalid field!\nPlease choose a valid number.\nYour choice: ");
+                System.out.print("Invalid field!\nPlease choose a valid number.(-1 to quit)\nYour choice: ");
             }
 
             catch (java.util.InputMismatchException e){
@@ -194,7 +194,7 @@ public abstract class  ValidInput {
             }
         }
 
-        return position;
+        return position -1;
     }
 
 
@@ -222,5 +222,29 @@ public abstract class  ValidInput {
     }
 
 
+    public byte chooseActionCard(){
+        byte card;
+        while (true){
+
+            System.out.print("Choose a card you want to play: ");
+
+            try {
+                card = input.nextByte();
+
+                if(card >= 1  &&  card <= 3)
+                    break;
+
+                System.out.print("Invalid field!\nPlease choose a valid number. (-1 to quit)\nYour choice: ");
+            }
+
+            catch (java.util.InputMismatchException e){
+                //e.printStackTrace();  //Can be enabled, but it is really messy
+                System.out.print("Please Enter a number: ");
+                input.next();
+            }
+        }
+
+        return (byte) (card - 1);
+    }
 
 }

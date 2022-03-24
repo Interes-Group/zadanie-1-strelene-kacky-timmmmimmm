@@ -41,14 +41,19 @@ public class Player {
         return name;
     }
 
+    public byte checkhealth(){
+        return health;
+    }
 
     public Card useCard(byte which){
 
-        Card card = hand.get(which);
+
+        return hand.get(which);
+
+    }
+
+    public void deleteCard(byte which){
         hand.remove(which);
-
-        return card;
-
     }
 
     public void receiveCard(Card card){
@@ -65,14 +70,14 @@ public class Player {
         ArrayList<Card> hand = new ArrayList<>();
 
         for (int i = 0; i < 3; i++) {
-            hand.add(this.hand.get(0));
+            hand.add(this.hand.get(i));
         }
 
         return hand;
     }
 
     public boolean checkIfDead(){
-        return health >= 1;
+        return health < 1;
     }
 
 

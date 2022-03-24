@@ -10,8 +10,9 @@ public class InitPlayers extends ValidInput {
 
 
     private byte playerCnt;
-    private ArrayList<String> names = new ArrayList<>();
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<String> names = new ArrayList<>();
+    private final ArrayList<Player> players = new ArrayList<>();
+
 
 
     public InitPlayers(){
@@ -28,11 +29,15 @@ public class InitPlayers extends ValidInput {
         return playerCnt;
     }
 
-    private void getPlayerNames(){
-        for (int i = 0; i < playerCnt; i++) {
+    public ArrayList<String> getPlayerNames(){
+
+        if(names.isEmpty())
+            for (int i = 0; i < playerCnt; i++) {
             System.out.print("Enter the name of player " + (i+1) + ": ");
             names.add(getName());
-        }
+            }
+
+        return names;
     }
 
     private void setPlayers(){
