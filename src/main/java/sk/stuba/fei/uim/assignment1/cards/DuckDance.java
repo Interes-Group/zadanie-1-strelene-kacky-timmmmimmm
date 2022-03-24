@@ -39,6 +39,6 @@ public class DuckDance implements Card {
     @Override
     public String toString() {
 
-        return "Duck March";
+        return "Duck Dance";
     }
 }
