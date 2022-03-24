@@ -29,7 +29,8 @@ public class GameManager extends ValidInput {
 
         boolean allAim = checkAllAimCards(playerPosition);
         boolean allShoot = checkAllShootCards(playerPosition);
-        boolean noReticle = checkAllReticles();
+        boolean noReticle = checkIfAllUnaimed();
+        boolean allReticle = checkIfAllAimed();
 
 
         byte cardIndex = 0;
@@ -38,7 +39,7 @@ public class GameManager extends ValidInput {
 
         while (true){
 
-            if((allShoot && noReticle)  ||  (allAim && !noReticle)){
+            if((allShoot && noReticle)  ||  (allAim && allReticle)){
                 System.out.println("Currently you can not play any cards, unfortunately you have to forfeit this round");
                 actionCard = players.get(playerPosition).useCard(cardIndex);
                 break;
@@ -92,7 +93,7 @@ public class GameManager extends ValidInput {
         return allAim;
     }
 
-    private boolean checkAllReticles(){
+    private boolean checkIfAllUnaimed(){
 
         boolean noReticle = true;
 
@@ -105,14 +106,27 @@ public class GameManager extends ValidInput {
         return noReticle;
     }
 
+    private boolean checkIfAllAimed(){
 
+        boolean allReticle = true;
+
+        for (boolean reticle: reticles){
+            if(!reticle){
+                allReticle = false;
+                break;
+            }
+
+        }
+
+        return allReticle;
+    }
 
 
 
     public boolean canPlayShoot(ArrayList<Boolean> reticles, Card actionCard){
 
         boolean noReticle = true;
-
+        boolean allReticle = true;
 
         for(boolean reticle : reticles)
             if(reticle){
@@ -120,8 +134,18 @@ public class GameManager extends ValidInput {
                 break;
             }
 
+        for (boolean reticle: reticles){
+            if(!reticle){
+                allReticle = false;
+                break;
+            }
 
-        return !(noReticle && Objects.equals("Shoot", actionCard.toString()));  //dont read too much into this, its just a NAND function
+        }
+
+        if(noReticle && Objects.equals("Shoot", actionCard.toString()))
+            return false;
+
+        return !(allReticle && Objects.equals("Aim", actionCard.toString()));//dont read too much into this, its just a NAND function
     }
 
 
