@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.assignment1.cards;
+package sk.stuba.fei.uim.assignment1.actioncards.cards;
 
 import sk.stuba.fei.uim.assignment1.player.Player;
 import sk.stuba.fei.uim.assignment1.pond.Pond;
@@ -6,7 +6,7 @@ import sk.stuba.fei.uim.assignment1.utility.ValidInput;
 
 import java.util.ArrayList;
 
-public class Shoot extends ValidInput implements Card {
+public class WildBill extends ValidInput implements Card {
 
     ArrayList<Integer> arena;
     ArrayList<Integer> remaining;
@@ -14,8 +14,7 @@ public class Shoot extends ValidInput implements Card {
     ArrayList<Player> players;
 
 
-    public Shoot(Pond pond, ArrayList<Player> players){
-
+    public WildBill(Pond pond, ArrayList<Player> players){
         arena = pond.accessArena();
         remaining = pond.accessRest();
         aim = pond.accessAim();
@@ -27,37 +26,36 @@ public class Shoot extends ValidInput implements Card {
     @Override
     public boolean use() {
 
-        int whereShoot = fireAt(aim);
+        int whereToShoot = fireAt();
 
-        if (whereShoot == -1)
+        if(whereToShoot == -1)
             return true;
 
-        aim.set(whereShoot,false);
-        int shotDuck = arena.get(whereShoot);
+        int shotDuck = arena.get(whereToShoot);
+        aim.set(whereToShoot,false);
 
         if(shotDuck == 0){
-            System.out.println("Lul you shot water");
+            System.out.println("Water? With this card? Bruh.");
             return false;
         }
 
-        arena.remove(whereShoot);
+        arena.remove(whereToShoot);
         arena.add(remaining.get(0));
         remaining.remove(0);
 
         for (Player player : players){
-            if(player.getID() == shotDuck){
+            if(player.getID() == shotDuck)
                 player.loseHealth();
-            }
         }
 
         return false;
     }
 
 
+
     @Override
     public String toString(){
-        return "Shoot";
+        return "Wild Bill";
     }
-
 
 }

@@ -2,6 +2,7 @@ package sk.stuba.fei.uim.assignment1.utility;
 
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //welcome to the most copypasta classes of them all the input verifier
@@ -60,7 +61,7 @@ public abstract class  ValidInput {
 
                     if(!field.get(position))
                         break;
-                    System.out.println("Your desired position has a reticule already aimed at it");
+                    System.out.println("Your desired position has a reticle already aimed at it");
                 }
 
                 else if(position == -1)
@@ -194,6 +195,30 @@ public abstract class  ValidInput {
         }
 
         return position;
+    }
+
+
+
+    public String getName(){
+
+        String name;
+
+
+        while (true){
+            try {
+                name = input.next();
+            }
+
+            catch (java.util.InputMismatchException e){
+                System.out.println("Something went wrong, try something else");
+                continue;
+            }
+
+            break;
+        }
+
+
+        return name;
     }
 
 

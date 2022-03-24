@@ -1,4 +1,4 @@
-package sk.stuba.fei.uim.assignment1.cards;
+package sk.stuba.fei.uim.assignment1.actioncards.cards;
 
 public interface Card {
     /**

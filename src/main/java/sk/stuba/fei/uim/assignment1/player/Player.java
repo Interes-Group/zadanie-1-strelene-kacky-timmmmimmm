@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.assignment1.player;
 
-import sk.stuba.fei.uim.assignment1.cards.Card;
+import sk.stuba.fei.uim.assignment1.actioncards.cards.Card;
 
 import java.util.ArrayList;
 
@@ -12,13 +12,21 @@ public class Player {
     private byte health = 5;
 
 
-    public Player(String name, byte ID, ArrayList<Card> hand){
+    public Player(String name, byte ID){
 
         this.name = name;
         this.ID = ID;
-        this.hand.addAll(hand);
     }
 
+
+    public void setHand(ArrayList<Card> hand){
+        if(!this.hand.isEmpty()){
+            this.hand.clear();
+        }
+        else
+            this.hand.addAll(hand);
+
+    }
 
 
     public byte getID(){
@@ -48,7 +56,10 @@ public class Player {
     }
 
 
-
+    /**
+     * Returns the contents of private field hand, any changes to the returned field will not affect the original field
+     * @return copy of private field hand
+     */
     public ArrayList<Card> getHand(){
 
         ArrayList<Card> hand = new ArrayList<>();
