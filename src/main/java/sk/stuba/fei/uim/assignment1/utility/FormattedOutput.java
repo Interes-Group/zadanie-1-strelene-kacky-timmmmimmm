@@ -1,6 +1,6 @@
 package sk.stuba.fei.uim.assignment1.utility;
 
-import sk.stuba.fei.uim.assignment1.engine.CardManager;
+import sk.stuba.fei.uim.assignment1.engine.GameManager;
 import sk.stuba.fei.uim.assignment1.player.Player;
 import sk.stuba.fei.uim.assignment1.pond.Pond;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public abstract class FormattedOutput{
 
-    CardManager check = new CardManager();
+    GameManager check = new GameManager();
 
     public void drawPlayground (Pond pond, ArrayList<Player> players, byte currentPlayer, int round, ArrayList<String> names){
         System.out.println("------\t\t\tRound " + round + "\t\t\t---------");
@@ -34,6 +34,10 @@ public abstract class FormattedOutput{
                             players.get(currentPlayer).getHand().get(i) : players.get(currentPlayer).getHand().get(i) + " (unplayable)"));
         }
         System.out.println();
+    }
+
+    public void victoryMessage(Player player){
+        System.out.println("\n\nCongrats " + player.name() + "! You won, but was it worth the ducks?\n\n\n\nThink about it");
     }
 
 

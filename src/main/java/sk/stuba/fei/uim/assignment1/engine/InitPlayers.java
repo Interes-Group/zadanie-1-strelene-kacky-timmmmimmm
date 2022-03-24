@@ -56,6 +56,4 @@ public class InitPlayers extends ValidInput {
             player.setHand(actionCards.fillHand());
         }
     }
-
-
 }

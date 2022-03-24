@@ -2,12 +2,11 @@ package sk.stuba.fei.uim.assignment1;
 
 import sk.stuba.fei.uim.assignment1.actioncards.cards.Card;
 import sk.stuba.fei.uim.assignment1.actioncards.container.ActionCards;
-import sk.stuba.fei.uim.assignment1.engine.CardManager;
+import sk.stuba.fei.uim.assignment1.engine.GameManager;
 import sk.stuba.fei.uim.assignment1.engine.InitPlayers;
 import sk.stuba.fei.uim.assignment1.player.Player;
 import sk.stuba.fei.uim.assignment1.pond.Pond;
 import sk.stuba.fei.uim.assignment1.utility.FormattedOutput;
-import sk.stuba.fei.uim.assignment1.utility.ValidInput;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -41,7 +40,7 @@ public class DuckHunt extends FormattedOutput {
 
         initPlayers.initHand(actionCards);
 
-        CardManager cardManager = new CardManager(pond,actionCards,players);
+        GameManager gameManager = new GameManager(pond,actionCards,players);
 
 
         byte currentPlayer = 0;
@@ -57,24 +56,13 @@ public class DuckHunt extends FormattedOutput {
 
             drawPlayground(pond,players,currentPlayer,round,names);
 
-            cardManager.useCard(currentPlayer);
+            gameManager.useCard(currentPlayer);
 
-            for (Iterator<Player> iterator = players.iterator(); iterator.hasNext();) {
-                Player player = iterator.next();
-                if(player.checkIfDead()) {
-                    System.out.println("\nLooks like its the end of the line for you " + player.name() + "\nGG and well, better luck next time");
-
-                    for (Card card : player.getHand())
-                        actionCards.returnCard(card);
-
-                    iterator.remove();
-                }
-            }
-
+            gameManager.checkPlayerStatus();
 
             currentPlayer++;
         }
 
-        System.out.println("\n\nCongrats " + players.get(0).name() + "! You won, but was it worth the ducks?\n\n\n\nThink about it");
+        victoryMessage(players.get(0));
     }
 }
