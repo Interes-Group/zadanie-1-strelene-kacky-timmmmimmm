@@ -2,7 +2,6 @@ package sk.stuba.fei.uim.assignment1.utility;
 
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //welcome to the most copypasta classes of them all the input verifier

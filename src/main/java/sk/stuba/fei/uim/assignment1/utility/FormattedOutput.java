@@ -5,7 +5,7 @@ import sk.stuba.fei.uim.assignment1.player.Player;
 import sk.stuba.fei.uim.assignment1.pond.Pond;
 
 import java.util.ArrayList;
-import java.util.Map;
+
 
 
 // I get that static functions are widely misused but come on

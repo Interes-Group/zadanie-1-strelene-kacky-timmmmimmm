@@ -5,9 +5,9 @@ import java.util.Collections;
 
 public class Pond {
 
-    private ArrayList<Integer> arena = new ArrayList<>();
-    private ArrayList<Integer> rest = new ArrayList<>();
-    private ArrayList<Boolean> aim = new ArrayList<>();
+    private final ArrayList<Integer> arena = new ArrayList<>();
+    private final ArrayList<Integer> rest = new ArrayList<>();
+    private final ArrayList<Boolean> aim = new ArrayList<>();
 
     public Pond(){}
 

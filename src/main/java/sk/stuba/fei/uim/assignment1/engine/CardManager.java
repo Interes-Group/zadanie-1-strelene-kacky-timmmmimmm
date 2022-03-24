@@ -53,11 +53,10 @@ public class CardManager extends ValidInput {
             }
 
 
-
-
-
         byte cardIndex = 0;
         Card actionCard;
+
+
         while (true){
 
 
